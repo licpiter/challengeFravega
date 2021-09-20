@@ -24,5 +24,13 @@ public class Nodo {
         this.latitud = latitud;
         this.longitud = longitud;
     }
+    
+    public Nodo(int id, double latitud, double longitud) {
+        this.id = id;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
+    
+    
 
 }
