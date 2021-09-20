@@ -18,7 +18,6 @@ public class Sucursal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Id
     private double latitud;
     private double longitud;
     private String direccion;

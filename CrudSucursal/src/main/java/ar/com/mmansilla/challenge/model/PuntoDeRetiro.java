@@ -17,7 +17,6 @@ public class PuntoDeRetiro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Id
     private double latitud;
     private double longitud;
     private long capacidad;
