@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,6 +31,13 @@ public class NodoRest {
         return nodoMasCercano(nodo);
     }
 
+    @GetMapping("/cercano")
+    public Nodo cercano_param(@RequestParam (value="latitud") double latitud, 
+                                        @RequestParam (value="longitud") double longitud) {
+        Nodo nodo = new Nodo(latitud, longitud);
+        return nodoMasCercano(nodo);
+    }
+
     @GetMapping("/listar")
     public List<Nodo> listar() {
         return listarNodos();
@@ -38,6 +46,13 @@ public class NodoRest {
     @GetMapping("/distancias/{latitud}/{longitud}")
     public Map<Double, Nodo> distancias(@PathVariable("latitud") double latitud,
                                         @PathVariable("longitud") double longitud) {
+        Nodo nodo = new Nodo(latitud, longitud);
+        return distanciaNodo(nodo);
+    }
+
+    @GetMapping("/distancias")
+    public Map<Double, Nodo> distancias_param(@RequestParam (value="latitud") double latitud, 
+                                        @RequestParam (value="longitud") double longitud) {
         Nodo nodo = new Nodo(latitud, longitud);
         return distanciaNodo(nodo);
     }
