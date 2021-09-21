@@ -49,13 +49,13 @@ public class NodoRest {
 
     public TreeMap<Double, Nodo> distanciaNodo(Nodo nodo) {
         List<Nodo> listaNodos = listarNodos();
-        TreeMap<Double, Nodo> mapa = new TreeMap<Double, Nodo>();
+        TreeMap<Double, Nodo> mapa = new TreeMap<>();
         listaNodos.forEach(nodito -> mapa.put(distanciaHaversine(nodito, nodo), nodito));
         return mapa;
     }
 
     public List<Nodo> listarNodos() {
-        List<Nodo> listaNodos = new ArrayList<Nodo>();
+        List<Nodo> listaNodos = new ArrayList<>();
         sucursalDAO.findAll().forEach((suc) -> {
             listaNodos.add(new Nodo(suc.getId(), suc.getLatitud(), suc.getLongitud()));
         });
@@ -65,27 +65,28 @@ public class NodoRest {
         return listaNodos;
     }
 
+    // retorna la distancia medida en kilometros
     static double distanciaHaversine(Nodo nodo1, Nodo nodo2) {
         double lat1 = nodo1.getLatitud();
         double lon1 = nodo1.getLongitud();
         double lat2 = nodo2.getLatitud();
         double lon2 = nodo2.getLongitud();
 
-        // distance between latitudes and longitudes
+        // distancia entre latitudes y longitudes
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);
 
-        // convert to radians
+        // en radianes
         lat1 = Math.toRadians(lat1);
         lat2 = Math.toRadians(lat2);
 
-        // apply formulae
+        // formula de Haversine
         double a = Math.pow(Math.sin(dLat / 2), 2)
                 + Math.pow(Math.sin(dLon / 2), 2)
                 * Math.cos(lat1)
                 * Math.cos(lat2);
-        double rad = 6371;
         double c = 2 * Math.asin(Math.sqrt(a));
-        return rad * c;
+        return RADIO_TIERRA * c;
     }
+    public static final int RADIO_TIERRA = 6371; // radio promedio en kms
 }

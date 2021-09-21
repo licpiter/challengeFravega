@@ -21,10 +21,6 @@ public class SucursalRest {
     @Autowired
     private SucursalDAO sucursalDAO;
     
-    // Metodos HTTP : solicitudes al server
-    // GET, POST, PUT, DELETE 
-    // -> Estado 200 : OK // 500 : ERROR DEL DAO // 404 : ALGO MAL (RUTAS)
-    
     // POST ==> localhost:8080/fravega/sucursal/guardar
     @PostMapping("/guardar")
     public void guardar(@RequestBody Sucursal sucursal) {

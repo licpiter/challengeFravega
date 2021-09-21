@@ -4,8 +4,10 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name="sucursal")
 public class Sucursal extends Nodo implements Serializable {
