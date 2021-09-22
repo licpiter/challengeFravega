@@ -1,6 +1,5 @@
 package ar.com.mmansilla.challenge.rest;
 
-import ar.com.mmansilla.challenge.dao.NodoDAO;
 import ar.com.mmansilla.challenge.dao.PuntoDeRetiroDAO;
 import ar.com.mmansilla.challenge.dao.SucursalDAO;
 import ar.com.mmansilla.challenge.model.Nodo;
@@ -21,8 +20,6 @@ import org.mockito.MockitoAnnotations;
 
 public class NodoRestTest {
     
-    @Mock
-    private NodoDAO nodoDAO;
     @Mock
     private SucursalDAO sucursalDAO;
     @Mock
