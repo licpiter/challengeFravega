@@ -25,7 +25,7 @@ public class PuntoDeRetiro extends Nodo implements Serializable {
         this.capacidad = capacidad;
     }
     
-    public PuntoDeRetiro(long capacidad, double latitud, double longitud) {
+    public PuntoDeRetiro(double latitud, double longitud, long capacidad) {
         super(latitud, longitud);
         this.capacidad = capacidad;
     }
